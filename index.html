@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<head>
+  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+    <title> Practice 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+
+body {
+      height: 100%;
+      width: 100%;
+      margin: 0%;
+     }
+   
+    .header {
+      display: flex;
+      height : 10%;
+      justify-content: space-between;
+      align-items: center;  
+      padding: 2%;
+      background-color: #8347e6;
+    }
+
+    .header h1 {
+      color: white;
+      font-size: 35px;
+      font-family: 'Times New Roman'; 
+    }
+
+    .search-container {
+    display: flex;
+    justify-content: left;
+    margin-right: 3%;
+    position:relative;
+    width: 75%;
+    }
+
+    input[type="text"] {
+    padding: 1%;
+    font-size: 16px;
+    border: 1px solid gray;
+    line-height: 10px;
+    width: 1200px;
+    }
+
+    .left {
+      height:1000px;
+      width:15%;
+      margin: 0;
+      background-color: #8347e6;
+    }
+
+    .content {
+      margin-left: 190px;
+      border-left: 1px solid #d4d4d4;
+      padding: 1em;
+      overflow: hidden;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    li a {
+      display: block;
+      color: #f1f1f1;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+   </style>
+</head>
+<body> 
+    <div class="container">
+
+        <header class="header">
+            <h1>Dashboard</h1>
+            <div class="search-container">
+                <input type="text" placeholder="Search...">
+              </div>
+          </header>
+          
+          <aside class="left">
+            <ul>
+              <li><a href="#dashboard">Dashboard</a></li>
+              <li><a href="#statistics">Statistics</a></li>
+              <li><a href="#earning">Earning</a></li>
+              <li><a href="#History">Order History</a></li>
+              <li><a href="#Campaign">Ads Campaign</a></li>
+              <li><a href="#Earning">Earning</a></li>
+              <br><br>
+            </ul>
+            
+          </aside>
+</body>
+</html>
