@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .task-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-bottom: 2px solid #333;
+            margin-bottom: 10px;
+            outline: none;
+        }
+        .add-task-button {
+            background-color: #008000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .add-task-button:hover {
+            background-color: #006400;
+        }
+        .todo-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .task-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+        }
+        .task-text {
+            flex: 1;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+        .custom-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #333;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .custom-checkbox.checked {
+            background-color: #008000;
+            border-color: #008000;
+            color: #fff;
+        }
+        .custom-checkbox.cross {
+            border-color: #ff0000;
+            color: #ff0000;
+        }
+        .delete-button {
+            width: 30px;
+            height: 30px;
+            background-color: #ff0000;
+            border: none;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .delete-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">To-Do List</div>
+        <input type="text" class="task-input" id="taskInput" placeholder="Enter your task here...">
+        <button class="add-task-button" onclick="addTask()">Add Task</button>
+        <ul class="todo-list" id="todo-list"></ul>
+    </div>
+
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const todoList = document.getElementById('todo-list');
+
+        function addTask() {
+            const taskText = taskInput.value.trim();
+            if (taskText !== '') {
+                const taskItem = document.createElement('li');
+                taskItem.classList.add('task-item');
+                taskItem.innerHTML = `
+                    <div class="custom-checkbox" onclick="toggleStrike(this)">&#10004;</div>
+                    <span class="task-text">${taskText}</span>
+                    <button class="delete-button" onclick="deleteTask(this)">&#10006;</button>
+                `;
+                todoList.appendChild(taskItem);
+                taskInput.value = '';
+            }
+        }
+
+        function toggleStrike(checkbox) {
+            const taskText = checkbox.nextElementSibling;
+            taskText.classList.toggle('completed');
+            checkbox.classList.toggle('checked');
+        }
+
+        function deleteTask(deleteButton) {
+            const taskItem = deleteButton.parentElement;
+            taskItem.remove();
+        }
+
+        taskInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        function toggleStrike(checkbox) {
+            const taskText = checkbox.nextElementSibling;
+            const deleteButton = taskText.nextElementSibling;
+
+            taskText.classList.toggle('completed');
+            if (taskText.classList.contains('completed')) {
+                checkbox.classList.remove('checked');
+                deleteButton.classList.add('cross');
+            } else {
+                checkbox.classList.add('checked');
+                deleteButton.classList.remove('cross');
+            }
+        }
+        
+    </script>
+</body>
+</html>
